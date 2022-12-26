@@ -21,7 +21,7 @@ public class AppointmentlistController : ControllerBase
         {
             name = null,
             id = "f748a05c-6",
-            Date = "21st Dec  2022",
+            currentdate = "21st Dec  2022",
             Appointmentdate = "21st Dec  2022",
             Starttime = "01:42",
             Endtime = "02:42",
@@ -31,7 +31,7 @@ public class AppointmentlistController : ControllerBase
         {
             name = null,
             id = "f748a05c-7",
-            Date = "21st Dec  2022",
+            currentdate = "21st Dec  2022",
             Appointmentdate = "21st Dec  2022",
             Starttime = "04:42",
             Endtime = "05:42",
@@ -41,7 +41,7 @@ public class AppointmentlistController : ControllerBase
         {
             name = null,
             id = "f748a05c-8",
-            Date = "21st Dec  2022",
+            currentdate = "21st Dec  2022",
             Appointmentdate = "21st Dec  2022",
             Starttime = "07:42",
             Endtime = "08:42",
@@ -55,17 +55,18 @@ public class AppointmentlistController : ControllerBase
     [HttpGet("{GetId}")]
     public IActionResult GetOne(string GetId)
     {
-        filteredAppointmentList = allAppointmentList.Where(x => x.Date == GetId).ToList();
+        filteredAppointmentList = allAppointmentList
+            .Where(x => x.Appointmentdate == GetId)
+            .ToList();
         filteredAppointmentList.Sort((x, y) => x.Starttime.CompareTo(y.Starttime));
         return Ok(filteredAppointmentList);
-        // return null;
     }
 
     [HttpPost]
     public IActionResult Addapp(Appointmentlist listval)
     {
         filteredAppointmentList = allAppointmentList
-            .Where(x => x.Date == listval.Appointmentdate)
+            .Where(x => x.Appointmentdate == listval.Appointmentdate)
             .ToList();
 
         foreach (var num in filteredAppointmentList)
@@ -99,7 +100,7 @@ public class AppointmentlistController : ControllerBase
             allAppointmentList.Add(listval);
             count = 0;
             filteredAppointmentList = allAppointmentList
-                .Where(x => x.Date == listval.Appointmentdate)
+                .Where(x => listval.currentdate == x.Appointmentdate)
                 .ToList();
             filteredAppointmentList.Sort((x, y) => x.Starttime.CompareTo(y.Starttime));
             return Created("", filteredAppointmentList);
@@ -114,7 +115,7 @@ public class AppointmentlistController : ControllerBase
     public IActionResult Patchapp(Patchappointmentlist patchval)
     {
         filteredAppointmentList = allAppointmentList
-            .Where(x => x.Date == patchval.Appointmentdate)
+            .Where(x => x.Appointmentdate == patchval.currentdate)
             .ToList();
 
         foreach (var num1 in filteredAppointmentList.ToList())
@@ -153,7 +154,7 @@ public class AppointmentlistController : ControllerBase
         }
 
         filteredAppointmentList = allAppointmentList
-            .Where(x => x.Date == patchval.Appointmentdate)
+            .Where(x => x.Appointmentdate == patchval.currentdate)
             .ToList();
 
         if (count == 0)

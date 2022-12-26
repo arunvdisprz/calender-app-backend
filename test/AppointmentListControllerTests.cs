@@ -12,40 +12,8 @@ using System.Threading.Tasks;
 
 public class AppointmentlistControllertest
 {
+    public static List<Appointmentlist> allAppointmentList = new List<Appointmentlist>() { };
 
-     public static List<Appointmentlist> allAppointmentList = new List<Appointmentlist>()
-    {
-        new Appointmentlist()
-        {
-            name = null,
-            id = "f748a05c-6",
-            Date = "21st Dec  2022",
-            Appointmentdate = "21st Dec  2022",
-            Starttime = "01:42",
-            Endtime = "02:42",
-            Appointmentcontent = "meet with ravi1"
-        },
-        new Appointmentlist()
-        {
-            name = null,
-            id = "f748a05c-7",
-            Date = "21st Dec  2022",
-            Appointmentdate = "21st Dec  2022",
-            Starttime = "04:42",
-            Endtime = "05:42",
-            Appointmentcontent = "meet with ravi2"
-        },
-        new Appointmentlist()
-        {
-            name = null,
-            id = "f748a05c-8",
-            Date = "21st Dec  2022",
-            Appointmentdate = "21st Dec  2022",
-            Starttime = "07:42",
-            Endtime = "08:42",
-            Appointmentcontent = "meet with ravi3"
-        }};
-    
     //FOR GET
     [Fact]
     public void Get_WhenCalled_ReturnsOkResult()
@@ -84,7 +52,7 @@ public class AppointmentlistControllertest
         {
             name = null,
             id = "f748a05c-6",
-            Date = "21st Dec  2022",
+            currentdate = "21st Dec  2022",
             Appointmentdate = "21st Dec  2022",
             Starttime = "07:42",
             Endtime = "09:42",
@@ -102,7 +70,7 @@ public class AppointmentlistControllertest
         {
             name = null,
             id = "f748a05c-6",
-            Date = "21st Dec  2022",
+            currentdate = "21st Dec  2022",
             Appointmentdate = "21st Dec  2022",
             Starttime = "07:42",
             Endtime = "09:42",
@@ -120,7 +88,7 @@ public class AppointmentlistControllertest
         {
             name = null,
             id = "f748a05c-4",
-            Date = "21st Dec  2022",
+            currentdate = "21st Dec  2022",
             Appointmentdate = "21st Dec  2022",
             Starttime = "11:42",
             Endtime = "12:42",
@@ -138,7 +106,7 @@ public class AppointmentlistControllertest
         {
             name = null,
             id = "f748a05c-9",
-            Date = "21st Dec  2022",
+            currentdate = "21st Dec  2022",
             Appointmentdate = "21st Dec  2022",
             Starttime = "21:42",
             Endtime = "22:42",
@@ -157,7 +125,7 @@ public class AppointmentlistControllertest
         var nameMissingItem = new Patchappointmentlist()
         {
             id = "f748a05c-6",
-            Appointmentdate = "21st Dec  2022",
+            currentdate = "21st Dec  2022",
             Starttime = "07:42",
             Endtime = "09:42",
             Appointmentcontent = "meet with ravi3"
@@ -173,7 +141,7 @@ public class AppointmentlistControllertest
         var nameMissingItem = new Patchappointmentlist()
         {
             id = "f748a05c-6",
-            Appointmentdate = "21st Dec  2022",
+            currentdate = "21st Dec  2022",
             Starttime = "09:42",
             Endtime = "10:42",
             Appointmentcontent = "meet with ravi3"
@@ -189,7 +157,7 @@ public class AppointmentlistControllertest
         var nameMissingItem = new Patchappointmentlist()
         {
             id = "f748a05c-6",
-            Appointmentdate = "21st Dec  2022",
+            currentdate = "21st Dec  2022",
             Starttime = "09:42",
             Endtime = "10:42",
             Appointmentcontent = "meet with ravi3"
